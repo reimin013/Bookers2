@@ -1,4 +1,7 @@
-# README
+### 学習記録
+- 開始日 4月3日：Userモデルを作成、sign_up / sign_in機能を実装
+
+<!-- # README
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -22,3 +25,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+ -->
