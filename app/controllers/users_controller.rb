@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
-  	@book = Book.new
-  	@books = Book.all
+    #特定のユーザーの情報を表示する
+  	render template: 'books/new'
+    #新規投稿をする
+  	render template: 'books/index'
+    #投稿の一覧表示をする
   end
 
   def index
@@ -19,7 +22,7 @@ class UsersController < ApplicationController
   	redirect_to user_path(user.id)
   end
 
-  protected
+  private
   def user_params
   	params.require(:user).permit(:name, :introduction, :profile_image)
   end

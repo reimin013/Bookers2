@@ -3,9 +3,17 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def new
+    @book = Book.new
+  end
+
   def show
-    @user = User.find(params[:user_id])
-    @book = Book.find(params[:id])
+    render template: 'users/show'
+    #特定のユーザーの情報を表示する
+    render :new
+    #新規投稿をする
+    @books = Book.find(params[:id])
+    #自分の投稿の一覧表示をする
   end
 
   def create

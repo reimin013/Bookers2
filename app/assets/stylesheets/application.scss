@@ -64,7 +64,7 @@ header {
     line-height: 20px;
 }
 
-.nav>li>a {
+.nav>li {
     position: relative;
     display: block;
     padding: 10px 15px;
@@ -77,6 +77,7 @@ a:visited {
     position: relative;
     top: 1px;
     display: inline-block;
+    float: right;
     font-family: 'Glyphicons Halflings';
     font-style: normal;
     font-weight: normal;
@@ -134,3 +135,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
