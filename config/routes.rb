@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  # get 'books/index'
-  # get 'books/show'
-  # get 'books/edit'
   # root 'users#show'これはいらない
   # '/' 'home/about' のページは、1.ルートパスを記述してつくる, 2.homeコントローラを新たに作る
   devise_for :users
