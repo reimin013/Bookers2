@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
   def index
+    @book = Book.new
+    @user = current_user
     @books = Book.all
   end
 
@@ -8,24 +10,25 @@ class BooksController < ApplicationController
   end
 
   def show
-    render template: 'users/show'
-    #特定のユーザーの情報を表示する
-    render :new
+    @book = Book.new
     #新規投稿をする
-    @books = Book.find(params[:id])
+    @book2 = Book.find(params[:id])
     #自分の投稿の一覧表示をする
+    @user = User.find(@book2.user_id)
+    #@book2のユーザーの情報を表示する,@book2.idだと本のidをとってきてしまう
   end
 
   def create
-  	book = Book.new(book_params)
-    book.user_id = current_user.id
-  	book.save
-  	redirect_to book_path(book.id)
-  	# redirect_to user_path(resource.id)
+  	@book = Book.new(book_params)
+    # 投稿データを保存するには、Strong Parameters も必要
+    @book.user_id = current_user.id
+  	@book.save
+  	redirect_to book_path(@book.id)
   end
 
   def edit
     @book = Book.find(params[:id])
+    @user = User.find(@book.user_id)
   end
 
   def update

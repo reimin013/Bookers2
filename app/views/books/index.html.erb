@@ -1,3 +1,50 @@
+  <div class="container">
+
+    <p id="notice"></p>
+
+
+    <div class="row">
+
+  <div class="col-xs-3">
+    <h2>User info</h2>
+    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class:"attachment user profile_image", fallback: "no_image.jpg" %>
+    <tbody>
+      <tr>
+      </tr>
+      <tr>
+    	  <th>name</th>
+    	  <th><%= @user.name %></th>
+      </tr>
+      <tr>
+    	  <th>introduction</th>
+    	  <th><%= @user.introduction %></th>
+      </tr>
+	</tbody>
+	</table>
+
+<div class="row">
+<% if @user == current_user %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
+<% end %>
+</div>
+
+<h2>New book</h2>
+ <%= form_for(@book) do |f| %>
+  <div class="field row">
+    <label for="book_title">Title</label>
+    <%= f.text_field :title, class:"col-xs-12 book_title" %>
+  </div>
+
+  <div class="field row">
+    <label for="book_opinion">Opinion</label>
+    <%= f.text_area :body, class:"col-xs-12 book_body" %>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit 'Create Book', class:"btn btn-primary col-xs-12" %>
+  </div>
+ <% end %>
+
 <% @books.each do |book| %>
   <p><%= book.title %></p>
   <p><%= book.body %></p>
