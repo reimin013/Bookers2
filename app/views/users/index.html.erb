@@ -1,33 +1,32 @@
-<div class="container">
- <p id="notice"></p>
-  <div class="row">
+<div class="row">
 
+<div class="col-xs-3">
 <!-- ユーザー情報　-->
-<%= render 'users/user', user: @user %>
-
+  <%= render 'users/user', user: @user %>
 <!-- 新規投稿部分　-->
-<%= render 'users/book', book: @book %>
-
+  <%= render 'users/book', book: @book %>
+</div>
 <!--ユーザー一覧-->
-<h2>Users</h2>
-<table>
- <thead>
-  <tr>
-    <th>image</th>
-    <th>name</th>
-    <th></th>
-  </tr>
- </thead>
- <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, class:"attachment user profile_image", fallback: "no_image.jpg" %></td>
-      <td><%= user.name %></td>
-      <td><%= link_to 'Show', user_path(user) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-  </thead>
-</table>
-    </div>
+<div class="col-xs-9">
+    <h2>Users</h2>
+    <table class="table">
+     <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th colspan="3"></th>
+      </tr>
+     </thead>
+     <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, class:"attachment user profile_image", fallback: "no_image.jpg" %></td>
+          <td><%= user.name %></td>
+          <td><%= link_to 'Show', user_path(user) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+      </thead>
+    </table>
+</div>
 </div>
