@@ -18,6 +18,14 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find(params[:id])
+    if @user != current_user
+       #redirect_to edit_user_path(@user)：これがあると無限にeditアクションを繰り返してしまう
+       redirect_to user_path(@user)
+       # @book = Book.new
+       # @books = Book.where(user_id: params[:id])
+       # render :show
+       #showページの結果として返しているだけなので、URLは変わらない
+    end
   end
 
   def update
@@ -28,7 +36,7 @@ class UsersController < ApplicationController
      flash[:notice] = "You have updated user successfully."
   	 redirect_to user_path(@user)
     else
-     render :edit
+     ridirect_to edit_user_path(@user)
     end
   end
 
