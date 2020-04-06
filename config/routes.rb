@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  # セッションがない時
   root 'homes#new'
   get 'home/about' => 'homes#about'
   # root 'users#show'これはいらない

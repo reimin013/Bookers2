@@ -1,4 +1,18 @@
+<h2>User info</h2>
+
 <%= form_for(@user) do |f| %>
+
+   <% if @user.errors.any? %>
+   <%= @user.errors.count %>errors prohibited this user from being saved:
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
     <div class="form-group has-icon">
         <label class="control-label sr-only" for="inputName">Name</label>
         <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputNmae", placeholder:"名前"%>

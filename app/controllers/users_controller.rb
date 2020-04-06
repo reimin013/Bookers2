@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
   	@user = User.find(params[:id])
     #特定のユーザーの情報を表示する
@@ -20,8 +22,14 @@ class UsersController < ApplicationController
 
   def update
   	@user = User.find(params[:id])
-  	@user.update(user_params)
-  	redirect_to user_path(@user)
+    # userデータを保存するには、Strong Parameters も必要
+    @user = current_user
+  	if @user.update(user_params)
+     flash[:notice] = "You have updated user successfully."
+  	 redirect_to user_path(@user)
+    else
+     render :edit
+    end
   end
 
   private

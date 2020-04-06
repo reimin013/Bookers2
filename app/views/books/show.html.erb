@@ -3,10 +3,6 @@
     <p id="notice"></p>
     <div class="row">
 
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
 <!-- ユーザー情報 -->
 <%= render 'books/user', user: @user %>
 
@@ -20,12 +16,15 @@
   <table class="table">
   <tbody>
       <tr>
-        <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class:"attachment user profile_image", fallback: "no_image.jpg" %></td>
+        <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class:"attachment user profile_image", fallback: "no_image.jpg" %><%= link_to @user.name, user_path(@user) %></td>
         <!-- 画像からプロフィール詳細にとべるように後で設定する -->
-        <td><%= @book2.title %></td>
+        <td><%= link_to @book2.title, book_path(@book2)  %></td>
         <td><%= @book2.body %></td>
+        <% if @user == current_user %>
         <td><%= link_to "Edit", edit_book_path(@book2) %></td>
         <td><%= link_to "Destroy", destroy_book_path(@book2), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        <td></td>
+        <% end %>
       </tr>
   </tbody>
   </table>
