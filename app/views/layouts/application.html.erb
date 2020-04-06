@@ -18,8 +18,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li class="glyphicon glyphicon-home home">
-            <%= link_to "Home", user_path(current_user.id) %>
+          <li>
+            <p><span class="glyphicon glyphicon-home home"></span><%= link_to "Home", user_path(current_user.id) %></p>
           <!--    もってくるときは関数名で-->
           </li>
           <li class="glyphicon glyphicon-user users" >
@@ -49,13 +49,13 @@
     </nav>
     </div>
     </header>
-    <body>
+    <div class="body">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
       <%= yield %>
 
-    </body>
+    </div>
     <footer>
      <div class="container">
       <div class="row">
