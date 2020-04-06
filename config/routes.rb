@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'homes#new'
+  get 'home/about' => 'homes#about'
   # root 'users#show'これはいらない
   # '/' 'home/about' のページは、1.ルートパスを記述してつくる, 2.homeコントローラを新たに作る
   devise_for :users
