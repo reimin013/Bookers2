@@ -36,7 +36,8 @@ class UsersController < ApplicationController
      flash[:notice] = "You have updated user successfully."
   	 redirect_to user_path(@user)
     else
-     ridirect_to edit_user_path(@user)
+     render :edit
+     # redirect_toにすると、エラーメッセージが表示されない！！
     end
   end
 
