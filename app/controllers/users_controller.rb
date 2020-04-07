@@ -33,8 +33,7 @@ class UsersController < ApplicationController
     # userデータを保存するには、Strong Parameters も必要
     @user = current_user
   	if @user.update(user_params)
-     flash[:notice] = "You have updated user successfully."
-  	 redirect_to user_path(@user)
+  	 redirect_to user_path(@user), notice: "You have updated user successfully."
     else
      render :edit
      # redirect_toにすると、エラーメッセージが表示されない！！

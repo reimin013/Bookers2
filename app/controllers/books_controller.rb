@@ -25,8 +25,7 @@ class BooksController < ApplicationController
     # 投稿データを保存するには、Strong Parameters も必要
     @book.user_id = current_user.id
   	if @book.save
-     flash[:notice] = "You have creatad book successfully."
-  	 redirect_to book_path(@book.id)
+  	 redirect_to book_path(@book.id), notice: "You have creatad book successfully."
     else
      @user = current_user
      @books = Book.all
@@ -46,8 +45,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.user_id = current_user.id
     if @book.update(book_params)
-     flash[:notice] = "You have updated book successfully."
-     redirect_to book_path(@book.id)
+     redirect_to book_path(@book.id), notice: "You have updated book successfully."
     else
      render :edit
     end
