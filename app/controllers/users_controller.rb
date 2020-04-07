@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     if @user != current_user
        #redirect_to edit_user_path(@user)：これがあると無限にeditアクションを繰り返してしまう
-       redirect_to user_path(@user)
+       redirect_to user_path(current_user)
        # @book = Book.new
        # @books = Book.where(user_id: params[:id])
        # render :show
