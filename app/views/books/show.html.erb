@@ -18,8 +18,7 @@
   <table class="table">
   <tbody>
       <tr>
-        <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class:"attachment user profile_image", fallback: "no_image.jpg" %><%= link_to @user.name, user_path(@user) %></td>
-        <!-- 画像からプロフィール詳細にとべるように後で設定する -->
+        <td><%= attachment_image_tag @user, :profile_image,:fill, 40, 40, class:"attachment user profile_image", fallback:"no_image.jpg" %><br><%= link_to @user.name, user_path(@user) %></td>
         <td><%= link_to @book2.title, book_path(@book2)  %></td>
         <td><%= @book2.body %></td>
         <% if @user == current_user %>
